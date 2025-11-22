@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pacotes</title>
+  <style>
+    body {
+      background-color: #1f3a93;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    body h1 {
+      color: yellow;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* centraliza horizontalmente */
+      gap: 20px; /* espaçamento entre imagem e botão */
+      margin-top: 20px;
+    }
+
+    .pacote-detalhe-img {
+      max-width: 100%;
+      height: 550px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #25D366;
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5b;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo" class="hidden">Título</h1>
+  
+  <div class="container">
+    <img id="imagem" class="pacote-detalhe-img hidden" src="" alt="Imagem do pacote" />
+    <a id="botao" class="btn-whatsapp hidden" href="#" target="_blank">Marque já a sua viagem!</a>
+  </div>
+
+  <script>
+    const pacotes = {
+      1: {
+        titulo: "Peregrinação Aparecida - Novembro 2025",
+        imagem: "./Pacotes/detalhes do pacote 2.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      2: {
+        titulo: "Peregrinação Canção Nova & Aparecida - Maio 2026",
+        imagem: "./Pacotes/detalhes do pacote 3.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      3: {
+        titulo: "Peregrinação Cimbres & Terra Da Misericórdia - Outubro 2025",
+        imagem: "./Pacotes/detalhes do pacote 4.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      4: {
+        titulo: "Natal Luz - Outubro 2025",
+        imagem: "./Pacotes/detalhes do pacote 5.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      5: {
+        titulo: "Peregrinação Aparecida - Maio 2026",
+        imagem: "./Pacotes/detalhes do pacote 6.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      6: {
+        titulo: "Peregrinação Grécia & Turquia - Outubro 2026",
+        imagem: "./Pacotes/detalhes do pacote 7.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      7: {
+        titulo: "Peregrinação PHN - Julho 2026",
+        imagem: "./Pacotes/detalhes do pacote 8.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      8: {
+        titulo: "Peregrinação Cimbres & Terra Da Misericórdia - Setembro 2025",
+        imagem: "./Pacotes/detalhes do pacote 9.jpg",
+        link: "https://wa.me/558391112000"
+      },
+      9: {
+        titulo: "Peregrinação Aparecida - Novembro 2026",
+        imagem: "./Pacotes/detalhes do pacote 10.jpg",
+        link: "https://wa.me/558391112000"
+      },
+    };
+
+    const id = new URLSearchParams(window.location.search).get("pacote");
+    const pacote = pacotes[id];
+
+    if (pacote?.titulo) {
+      const tituloEl = document.getElementById("titulo");
+      const imagemEl = document.getElementById("imagem");
+      const botaoEl = document.getElementById("botao");
+
+      tituloEl.textContent = pacote.titulo;
+      tituloEl.classList.remove("hidden");
+
+      imagemEl.src = pacote.imagem;
+      imagemEl.alt = pacote.titulo;
+      imagemEl.classList.remove("hidden");
+
+      botaoEl.href = pacote.link;
+      botaoEl.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
